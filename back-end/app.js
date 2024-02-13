@@ -22,6 +22,7 @@ mongoose
 const { Message } = require('./models/Message')
 const { User } = require('./models/User')
 
+
 // a route to handle fetching all messages
 app.get('/messages', async (req, res) => {
   // load all messages from database
@@ -57,6 +58,23 @@ app.get('/messages/:messageId', async (req, res) => {
     })
   }
 })
+// New route for `About me` Page content
+app.get('/about-me' , async (req , res) =>
+{
+  res.json(
+    {
+      title: "About me" ,
+      paragraphs: [
+        "My name is Ellis Pinsky, I am a Senior at NYU with a passion for building and entrepreneurship" , 
+        "In my spare time I love hanging out with friends, training Jiu Jitsu and reading!"
+      ] ,
+      imageUrl : "https://avatars.githubusercontent.com/u/48781372?v=4"
+    }
+  )
+
+})
+
+
 // a route to handle logging out users
 app.post('/messages/save', async (req, res) => {
   // try to save the message to the database
